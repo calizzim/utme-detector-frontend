@@ -1,4 +1,4 @@
-import { LoadResourceService } from './../services/load-resource.service';
+import { BackendRequestService } from './../services/backend-request.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 
@@ -6,7 +6,7 @@ import { CanActivate, ActivatedRouteSnapshot } from '@angular/router';
   providedIn: 'root'
 })
 export class LoadFormGuard implements CanActivate {
-  constructor(private service:LoadResourceService) {}
+  constructor(private service:BackendRequestService) {}
   async canActivate(route: ActivatedRouteSnapshot) {
     await this.service.loadTemplate(route.data.templateName)
     return true;

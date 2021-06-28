@@ -10,6 +10,8 @@ export class McalizziFormComponent implements OnInit {
   @Input('template') template;
   @Input('templateName') formName;
   @Input('submitAction') submitAction;
+  @Input('alert') alert = { active: false, message: '' }
+
   @Output('formSubmitted') data = new EventEmitter();
 
   form = new FormGroup({});
@@ -69,7 +71,7 @@ export class McalizziFormComponent implements OnInit {
       }
     }
     if(this.submitAction == 'upload') this.request.uploadForm(data,this.formName)
-    else this.data.emit(data)
+    this.data.emit(data)
     if(this.template.resetOnSubmit) this.form.reset()
     this.failedToSubmit = false
   }

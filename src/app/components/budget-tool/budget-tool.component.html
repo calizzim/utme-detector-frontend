@@ -1,0 +1,21 @@
+<mcalizzi-form 
+templateName="salaryInfo" 
+[template]="template"
+(formSubmitted)="submitForm($event)"
+></mcalizzi-form>
+
+<div *ngIf="formSumitted">
+    <h1>What does this get you?</h1>
+    <p f->
+        your state income tax is: {{ taxes.state | currency}}<br>
+        your federal income tax is: {{ taxes.federal | currency}}<br>
+        your total income tax burden is: {{ taxes.total | currency }}<br>
+        this leaves you with {{ data.posttaxSalary | currency }} after taxes<br>
+        saving {{ data.savingPercentage }}% of your post tax salary means you will save:<br>
+        {{ data.yearlySavings | currency }} per year<br>
+        {{ (data.yearlySavings/12) | currency }} per month<br>
+        {{ (data.yearlySavings/365) | currency }} per day<br>
+    </p>    
+</div>
+
+<div style="height:300px"></div>

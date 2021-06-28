@@ -1,7 +1,7 @@
 <h1 *ngIf="template.showTitle">{{ template.title }}</h1>
 <form [formGroup]="form" class="mb-3">
     <div *ngFor="let formGroup of template.groups">
-        <h3 *ngIf="formGroup.showTitle">{{formGroup.title | varToString}}</h3>
+        <h5 *ngIf="formGroup.showTitle">{{formGroup.title | varToString:'au' }}</h5>
         <div class="row" [formGroupName]="formGroup.title">
             <ng-container *ngFor="let field of formGroup.components" [ngSwitch]="field.type">
                 <div *ngSwitchCase="'text'" class="mb-2 col-12 col-md-6 col-xl-4 align-self-center"
@@ -30,7 +30,7 @@
                     [class.is-invalid]="isInvalid(formGroup,field)" 
                     [class.is-valid]="isValid(formGroup,field)">
                         <option value=''></option>
-                        <option *ngFor = "let option of field.options">{{ option | titlecase}}</option>
+                        <option *ngFor = "let option of field.options" [value]="option">{{ option | titlecase}}</option>
                     </select>
                     <div class="valid-feedback">{{ getMessage(formGroup,field) }}</div>
                     <div class="invalid-feedback">{{ (field.name | varToString:'al') + ' ' + getMessage(formGroup,field) }}</div>
@@ -38,9 +38,9 @@
                         {{ field.hint || "please select " + (field.name | varToString) }}
                     </small>
                 </div>
-                
             </ng-container>
         </div>
     </div>
+    <div class="alert alert-danger" *ngIf="alert.active">{{ alert.message }}</div>
     <button class="btn btn-success" type="submit" (click)="onSubmit()">{{ template.submitText || 'Submit' | titlecase }}</button>
 </form>
