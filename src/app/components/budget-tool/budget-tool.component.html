@@ -1,21 +1,42 @@
 <mcalizzi-form 
-templateName="salaryInfo" 
+templateName="templateName" 
 [template]="template"
 (formSubmitted)="submitForm($event)"
 ></mcalizzi-form>
 
-<div *ngIf="formSumitted">
-    <h1>What does this get you?</h1>
-    <p f->
-        your state income tax is: {{ taxes.state | currency}}<br>
-        your federal income tax is: {{ taxes.federal | currency}}<br>
-        your total income tax burden is: {{ taxes.total | currency }}<br>
-        this leaves you with {{ data.posttaxSalary | currency }} after taxes<br>
-        saving {{ data.savingPercentage }}% of your post tax salary means you will save:<br>
-        {{ data.yearlySavings | currency }} per year<br>
-        {{ (data.yearlySavings/12) | currency }} per month<br>
-        {{ (data.yearlySavings/365) | currency }} per day<br>
-    </p>    
+
+<div *ngIf = "computedData">
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <h4>Tax Information</h4>
+            <mcalizzi-table 
+            [cr-data] = "[
+                ['federal income tax', computedData.taxes.federal | currency],
+                ['state income tax', computedData.taxes.state | currency],
+                ['FICA (social security + medicare)', computedData.taxes.fica | currency],
+                ['Total', computedData.taxes.total | currency],
+                ['post tax salary', computedData.posttaxSalary | currency]
+            ]"
+            [co-columnNames] = "['Tax Type', 'Amount']"
+            ></mcalizzi-table>
+        </div>
+        <div class="col-12 col-lg-6">
+            <h4>Saving Information</h4>
+            <mcalizzi-table 
+            [cr-data] = "[
+                ['401k contribution', computedData.savings.contribution | currency],
+                ['additional savings', computedData.savings.additional | currency],
+                ['Total savings (yearly)', computedData.savings.total | currency],
+                ['Total savings (monthly)', (computedData.savings.total / 12) | currency],
+                ['Total savings (daily)', (computedData.savings.total / 365) | currency]
+            ]"
+            [co-columnNames] = "['Tax Type', 'Amount']"
+            ></mcalizzi-table>
+        </div>
+    </div>
 </div>
+
+<ngx-charts-pie-chart [result]="data">
+</ngx-charts-pie-chart>
 
 <div style="height:300px"></div>

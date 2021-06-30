@@ -23,7 +23,7 @@
                         <label class="form-check-label">{{option | titlecase}}</label>
                     </div>
                 </div>
-                <div *ngSwitchCase="'dropdown'" class="mb-3 col-12 col-md-6 col-xl-4 align-self-start"
+                <div *ngSwitchCase="'dropdown'" class="mb-2 col-12 col-md-6 col-xl-4 align-self-start"
                 style="height: 100px">
                     <label class='form-label'>{{ field.name | varToString:'fu' }}</label>
                     <select class="form-select" [formControlName] = "field.name"

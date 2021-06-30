@@ -1,5 +1,6 @@
 import { BackendRequestService } from './../../services/backend-request.service';
 import { Component, OnInit } from '@angular/core';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-budget-tool',
@@ -8,23 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BudgetToolComponent implements OnInit {
 
-  constructor(private request:BackendRequestService) { }
-  template = this.request.templates['salaryInfo']
-  formSumitted = false
-  taxes = {}
-  data
+  constructor(private http:BackendRequestService) { }
+  templateName = 'salaryInfo'
+  template = this.http.templates[this.templateName]
+  data = [
+    {
+      name: "Germany",
+      value: 8940000
+    },
+    {
+      name: "England",
+      value: 8940000
+    },
+    {
+      name: "Spain",
+      value: 8940000
+    },
+    {
+      name: "France",
+      value: 8940000
+    }
+  ]
+  computedData
   ngOnInit():void {}
   async submitForm(data) {
-    this.data=data
-    let salary = data.salaryType == 'monthly' ? 12 * data.pretaxSalary : data.pretaxSalary
-    this.taxes = await this.request.post('api/taxes', { 
-      salary: salary, 
-      state: data.state, 
-      filingStatus: data.filingStatus 
-    })
-    this.taxes['total']=this.taxes['state']+this.taxes['federal']
-    this.data['posttaxSalary']=data.pretaxSalary-this.taxes['total']
-    this.data['yearlySavings']=data.posttaxSalary*data.savingPercentage/100
-    this.formSumitted=true
+    this.computedData = await this.http.uploadForm(data,this.templateName)
   }
 }

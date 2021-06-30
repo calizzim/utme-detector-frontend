@@ -23,6 +23,7 @@ export class BackendRequestService {
     let URL = 'forms/'+templateName
     let result = await this.post(URL,formData)
     if(result.error) console.log(result.error.message)
+    return result
   }
   
   async login(loginData):Promise<boolean> {

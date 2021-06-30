@@ -14,6 +14,9 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { BudgetToolComponent } from './components/budget-tool/budget-tool.component';
 import { AuthGuard } from './guards/auth.guard';
+import { McalizziTableComponent } from './components/mcalizzi-table/mcalizzi-table.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -23,9 +26,12 @@ import { AuthGuard } from './guards/auth.guard';
     SignupComponent,
     LoginComponent,
     HomeComponent,
-    BudgetToolComponent
+    BudgetToolComponent,
+    McalizziTableComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
+    NgxChartsModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
