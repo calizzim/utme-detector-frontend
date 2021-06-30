@@ -3,7 +3,6 @@ import { BackendRequestService } from './../../services/backend-request.service'
 import { Component, OnInit } from '@angular/core';
 import { catchError, map } from 'rxjs/operators'
 import { Observable, of } from 'rxjs'
-import * as _ from 'lodash'
 
 @Component({
   selector: 'app-signup',
@@ -22,6 +21,6 @@ export class SignupComponent implements OnInit {
 
   async signup(data) {
     await this.requests.uploadForm(data,'user')
-    await this.requests.login(_.pick(data,'email','password'))
+    await this.requests.login({email: data.email, password: data.password})
   }
 }
