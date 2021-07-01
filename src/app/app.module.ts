@@ -15,7 +15,9 @@ import { HomeComponent } from './components/home/home.component';
 import { BudgetToolComponent } from './components/budget-tool/budget-tool.component';
 import { AuthGuard } from './guards/auth.guard';
 import { McalizziTableComponent } from './components/mcalizzi-table/mcalizzi-table.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { McalizziPiechartComponent } from './mcalizzi-piechart/mcalizzi-piechart.component';
+import { McalizziLinechartComponent } from './components/mcalizzi-linechart/mcalizzi-linechart.component'
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     HomeComponent,
     BudgetToolComponent,
     McalizziTableComponent,
+    McalizziPiechartComponent,
+    McalizziLinechartComponent,
   ],
   imports: [
     BrowserAnimationsModule,
