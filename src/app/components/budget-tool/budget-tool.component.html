@@ -1,9 +1,7 @@
 <mcalizzi-form 
-templateName="templateName" 
-[template]="template"
+[templateName]="templateName"
 (formSubmitted)="submitForm($event)"
 ></mcalizzi-form>
-
 
 <div *ngIf = "computedData">
     <div class="row">
@@ -33,11 +31,17 @@ templateName="templateName"
             [co-columnNames] = "['Tax Type', 'Amount']"
             ></mcalizzi-table>
         </div>
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-7">
             <h4 class="text-center">Wealth Accumulation Over Time</h4>
             <mcalizzi-linechart style = "position: relative; display:block"
             [cr-data]="computedData.savingsChartData"
             ></mcalizzi-linechart>
+        </div>
+        <div class="col-12 col-lg-5">
+            <h4 class="text-center">Spending By Percentage</h4>
+            <mcalizzi-piechart style = "position: relative; display:block"
+            [cr-data]="computedData.pieChartData"
+            ></mcalizzi-piechart>
         </div>
     </div>
 </div>

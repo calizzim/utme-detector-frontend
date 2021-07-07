@@ -10,13 +10,11 @@ import { Observable, of } from 'rxjs'
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  signupSheetTemplate
   
   constructor(private requests:BackendRequestService, private http:HttpClient) { 
   }
   
   ngOnInit(): void {
-    this.signupSheetTemplate = this.requests.templates['user']  
   }
 
   async signup(data) {

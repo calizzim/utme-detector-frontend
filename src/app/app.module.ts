@@ -1,3 +1,4 @@
+import { McalizziPiechartComponent } from './components/mcalizzi-piechart/mcalizzi-piechart.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { BackendRequestService } from './services/backend-request.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -8,7 +9,6 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { McalizziFormComponent } from './components/mcalizzi-form/mcalizzi-form.component';
-import { LoadFormGuard } from './guards/load-form.guard';
 import { VarToStringPipe } from './pipes/var-to-string.pipe';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
@@ -16,8 +16,8 @@ import { BudgetToolComponent } from './components/budget-tool/budget-tool.compon
 import { AuthGuard } from './guards/auth.guard';
 import { McalizziTableComponent } from './components/mcalizzi-table/mcalizzi-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { McalizziPiechartComponent } from './mcalizzi-piechart/mcalizzi-piechart.component';
-import { McalizziLinechartComponent } from './components/mcalizzi-linechart/mcalizzi-linechart.component'
+import { McalizziLinechartComponent } from './components/mcalizzi-linechart/mcalizzi-linechart.component';
+import { HomeInfoComponent } from './components/home-info/home-info.component'
 
 @NgModule({
   declarations: [
@@ -29,8 +29,9 @@ import { McalizziLinechartComponent } from './components/mcalizzi-linechart/mcal
     HomeComponent,
     BudgetToolComponent,
     McalizziTableComponent,
-    McalizziPiechartComponent,
     McalizziLinechartComponent,
+    McalizziPiechartComponent,
+    HomeInfoComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -42,20 +43,20 @@ import { McalizziLinechartComponent } from './components/mcalizzi-linechart/mcal
       {
         path: 'signup', 
         component: SignupComponent, 
-        canActivate: [LoadFormGuard],
-        data: { templateName: 'user' }
       },
       {
         path: 'login', 
         component: LoginComponent, 
-        canActivate: [LoadFormGuard],
-        data: { templateName: 'login' }
       },
       {
         path: 'budgetTool', 
         component: BudgetToolComponent,
-        canActivate: [AuthGuard,LoadFormGuard],
-        data: { templateName: 'salaryInfo' }
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'homeInfo', 
+        component: HomeInfoComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: '', 

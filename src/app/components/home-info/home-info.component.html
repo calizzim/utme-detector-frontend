@@ -1,0 +1,22 @@
+<mcalizzi-form 
+templateName="homeInfo"
+submitAction="upload"
+(formSubmitted)="formSubmitted($event)"
+></mcalizzi-form>
+
+<div *ngIf="computedData">
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <h4>Home Information</h4>
+            <mcalizzi-table [cr-data] = "[['home value you can afford',computedData.homeValue | currency]]">
+            </mcalizzi-table>
+        </div>
+        <div class="col-12 col-lg-6">
+            <h4>Equity Over Time</h4>
+            <mcalizzi-linechart 
+            [cr-data] = "computedData.homeEquityData"
+            style = "position: relative; display:block"
+            ></mcalizzi-linechart>
+        </div>
+    </div>
+</div>

@@ -1,3 +1,4 @@
+import { LoginService } from './../../services/login.service';
 import { BackendRequestService } from '../../services/backend-request.service';
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl, ValidationErrors, ValidatorFn, AsyncValidatorFn } from '@angular/forms';
@@ -7,23 +8,37 @@ import { FormGroup, FormControl, Validators, AbstractControl, ValidationErrors, 
   styleUrls: ['./mcalizzi-form.component.css']
 })
 export class McalizziFormComponent implements OnInit {
-  @Input('template') template;
-  @Input('templateName') formName;
+  //required properties
+  @Input('templateName') templateName;
+  
+  //optional properties
+  @Input('fillFromDatabase') fillFromDatabase = true
   @Input('submitAction') submitAction;
   @Input('alert') alert = { active: false, message: '' }
-
+  
+  //output properties
   @Output('formSubmitted') data = new EventEmitter();
-
+  
+  //class properties
   form = new FormGroup({});
+  template
+  formValues
   
-  constructor(private request:BackendRequestService) { }
+  constructor(private http:BackendRequestService,
+              private login:LoginService) { }
   
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.template = this.http.get('forms/'+this.templateName)
+    if(this.fillFromDatabase && this.login.is()) {
+      this.formValues = await this.http.get('forms/formdata/'+this.templateName)
+    }
+    this.template = await this.template
     for(let group of this.template.groups){
       let formGroup = new FormGroup({});
       for(let component of group.components){
+        let value = this.formValues ? this.formValues[component.name] || '' : ''
         let formControl = new FormControl(
-          '', 
+          value, 
           this.getValidators(component.validators),
           this.getAsyncValidatorFn(component.name,component.asyncValidators)
         );
@@ -46,7 +61,6 @@ export class McalizziFormComponent implements OnInit {
     return !obj.touched && !this.failedToSubmit
   }
   
-
   getMessage(group, field) {
     let component = this.form.get([group.title,field.name])
     const errors = component.errors
@@ -57,20 +71,18 @@ export class McalizziFormComponent implements OnInit {
   }
 
   failedToSubmit = false
-  onSubmit() {
-    //make sure that the form is valid
+  async onSubmit() {
     if(!this.form.valid) {
       this.failedToSubmit = true
       return
     }
-    //construct the return object
     let data = {};
     for(let group of this.template.groups){
       for(let component of group.components){
         data[component.name] = this.form.get([group.title, component.name]).value;
       }
     }
-    if(this.submitAction == 'upload') this.request.uploadForm(data,this.formName)
+    if(this.submitAction == 'upload') data = await this.http.uploadForm(data,this.templateName)
     this.data.emit(data)
     if(this.template.resetOnSubmit) this.form.reset()
     this.failedToSubmit = false
@@ -100,11 +112,11 @@ export class McalizziFormComponent implements OnInit {
   getAsyncValidatorFn(fieldName, validators):AsyncValidatorFn|null {
     if(!validators) return null
     return (field:AbstractControl):Promise<ValidationErrors|null> => {
-      return this.request.asyncVerify({
+      return this.http.asyncVerify({
         name: fieldName,
         value: field.value,
         validators: validators
-      }, this.formName)
+      }, this.templateName)
     }
   }
 

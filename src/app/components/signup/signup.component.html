@@ -1,2 +1,5 @@
-<mcalizzi-form templateName="user" [template]="signupSheetTemplate"
-(formSubmitted)="signup($event)"></mcalizzi-form>
+<mcalizzi-form 
+templateName="user"
+[fillFromDatabase]="false"
+(formSubmitted)="signup($event)"
+></mcalizzi-form>

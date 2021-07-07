@@ -13,7 +13,6 @@ export class LoginComponent implements OnInit {
     private request:BackendRequestService,
     private router:Router
     ) {}
-  template = this.request.templates['login']
   alert = { active: false, message: 'invalid username or password' }
   async submit(data) {
     if(!await this.request.login(data)) return this.alert.active = true

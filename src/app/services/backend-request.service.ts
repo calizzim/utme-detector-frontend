@@ -9,15 +9,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BackendRequestService {
-  templates = {}
   backendURL = environment.backendURL
   constructor(private http:HttpClient) {}
-  
-  async loadTemplate(templateName) {
-    let result = await this.get('forms/'+templateName)
-    if(result.error) return console.log(result.error.message)
-    this.templates[templateName] = result
-  }
   
   async uploadForm(formData,templateName) {
     let URL = 'forms/'+templateName
@@ -63,6 +56,7 @@ export class BackendRequestService {
           })
         }
         else {
+          console.log(error.error)
           return of({ 
             error: {
               message: error.error,
