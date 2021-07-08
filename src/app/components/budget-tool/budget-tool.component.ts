@@ -1,3 +1,4 @@
+import { CurrencyLettersPipe } from './../../pipes/currency-letters.pipe';
 import { BackendRequestService } from './../../services/backend-request.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class BudgetToolComponent {
-  constructor(private http:BackendRequestService) { }
+  collapsed = true
+  constructor(
+    private http:BackendRequestService,
+    public currencyLettersPipe: CurrencyLettersPipe) { }
   templateName = 'salaryInfo'
   computedData
   async submitForm(data) {

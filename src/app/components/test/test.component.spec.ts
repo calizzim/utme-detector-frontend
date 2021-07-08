@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { McalizziPiechartComponent } from './mcalizzi-piechart.component';
+import { TestComponent } from './test.component';
 
-describe('McalizziPiechartComponent', () => {
-  let component: McalizziPiechartComponent;
-  let fixture: ComponentFixture<McalizziPiechartComponent>;
+describe('TestComponent', () => {
+  let component: TestComponent;
+  let fixture: ComponentFixture<TestComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ McalizziPiechartComponent ]
+      declarations: [ TestComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(McalizziPiechartComponent);
+    fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

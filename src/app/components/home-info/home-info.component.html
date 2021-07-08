@@ -1,4 +1,5 @@
 <mcalizzi-form 
+tem
 templateName="homeInfo"
 submitAction="upload"
 (formSubmitted)="formSubmitted($event)"
@@ -12,10 +13,13 @@ submitAction="upload"
             </mcalizzi-table>
         </div>
         <div class="col-12 col-lg-6">
-            <h4>Equity Over Time</h4>
+            <h4 class="text-center">Equity Over Time</h4>
             <mcalizzi-linechart 
             [cr-data] = "computedData.homeEquityData"
-            style = "position: relative; display:block"
+            [co-xaxis] = "'years into mortgage'|titlecase"
+            [co-yaxis] = "'equity in home'|titlecase"
+            [co-yaxisPipe] = "currencyLetters"
+            co-tooltip-prefix = "Years"
             ></mcalizzi-linechart>
         </div>
     </div>

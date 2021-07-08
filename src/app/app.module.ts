@@ -18,7 +18,9 @@ import { McalizziLinechartComponent } from './custom-components/mcalizzi-linecha
 import { AuthGuard } from './guards/auth.guard';
 import { VarToStringPipe } from './pipes/var-to-string.pipe';
 import { BackendRequestService } from './services/backend-request.service';
-
+import { CurrencyLettersPipe } from './pipes/currency-letters.pipe';
+import { McalizziCollapseComponent } from './custom-components/mcalizzi-collapse/mcalizzi-collapse.component';
+import { TestComponent } from './components/test/test.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,10 @@ import { BackendRequestService } from './services/backend-request.service';
     McalizziTableComponent,
     McalizziLinechartComponent,
     McalizziPiechartComponent,
-    HomeInfoComponent
+    HomeInfoComponent,
+    CurrencyLettersPipe,
+    McalizziCollapseComponent,
+    TestComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -59,6 +64,10 @@ import { BackendRequestService } from './services/backend-request.service';
         canActivate: [AuthGuard],
       },
       {
+        path: 'test', 
+        component: TestComponent
+      },
+      {
         path: '', 
         component: HomeComponent, 
       },
@@ -66,6 +75,7 @@ import { BackendRequestService } from './services/backend-request.service';
   ],
   providers: [
     BackendRequestService,
+    CurrencyLettersPipe
   ],
   bootstrap: [AppComponent],
 })

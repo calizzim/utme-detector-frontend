@@ -1,3 +1,4 @@
+import { CurrencyLettersPipe } from './../../pipes/currency-letters.pipe';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeInfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public currencyLetters:CurrencyLettersPipe) { }
 
   ngOnInit(): void {
   }
