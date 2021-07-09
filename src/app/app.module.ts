@@ -19,8 +19,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { VarToStringPipe } from './pipes/var-to-string.pipe';
 import { BackendRequestService } from './services/backend-request.service';
 import { CurrencyLettersPipe } from './pipes/currency-letters.pipe';
-import { McalizziCollapseComponent } from './custom-components/mcalizzi-collapse/mcalizzi-collapse.component';
 import { TestComponent } from './components/test/test.component';
+import { McalizziCollapseComponent } from './custom-components/mcalizzi-collapse/mcalizzi-collapse.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,8 +35,8 @@ import { TestComponent } from './components/test/test.component';
     McalizziPiechartComponent,
     HomeInfoComponent,
     CurrencyLettersPipe,
-    McalizziCollapseComponent,
-    TestComponent
+    TestComponent,
+    McalizziCollapseComponent
   ],
   imports: [
     BrowserAnimationsModule,

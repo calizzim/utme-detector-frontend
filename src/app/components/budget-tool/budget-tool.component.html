@@ -32,9 +32,9 @@
         </div>
         <div class="col-12 col-lg-7">
             <h4 class="text-center">Wealth Accumulation Over Time</h4>
-            <mcalizzi-linechart style = "position: relative; display:block"
+            <mcalizzi-linechart
             [cr-data]="computedData.savingsChartData"
-            [co-yaxisPipe]="currencyLettersPipe"
+            [co-yaxis-pipe]="currencyLettersPipe"
             co-xaxis="age (years)"
             co-yaxis="wealth (dollars)"
             co-tooltip-prefix="Age"
@@ -42,9 +42,9 @@
         </div>
         <div class="col-12 col-lg-5">
             <h4 class="text-center">Spending By Percentage</h4>
-            <mcalizzi-piechart style = "position: relative; display:block"
+            <mcalizzi-piechart
             [cr-data]="computedData.pieChartData"
-            [co-yaxisPipe] = "currencyLettersPipe"
+            [co-yaxis-pipe] = "currencyLettersPipe"
             ></mcalizzi-piechart>
         </div>
     </div>
