@@ -10,7 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class BackendRequestService {
   backendURL = environment.backendURL
-  constructor(private http:HttpClient) {}
+  constructor(private http:HttpClient) {
+  }
   
   async uploadForm(formData,templateName) {
     let URL = 'forms/'+templateName
@@ -33,12 +34,14 @@ export class BackendRequestService {
   }
 
   get(URL):Promise<any> {
-    let result = this.http.get(this.backendURL+URL,{headers:{token:localStorage.getItem('token')}})
+    let token = localStorage.getItem('token') || ''
+    let result = this.http.get(this.backendURL+URL,{headers:{token}})
     return this.handle(result)
   }
 
   post(URL, data):Promise<any> {
-    let result = this.http.post(this.backendURL+URL,data,{headers:{token:localStorage.getItem('token')}})
+    let token = localStorage.getItem('token') || ''
+    let result = this.http.post(this.backendURL+URL,data,{headers:{token}})
     return this.handle(result)
   }
 
@@ -56,7 +59,7 @@ export class BackendRequestService {
           })
         }
         else {
-          console.log(error.error)
+          console.log(error)
           return of({ 
             error: {
               message: error.error,
