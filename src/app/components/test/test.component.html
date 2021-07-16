@@ -1,11 +1,11 @@
-<mcalizzi-collapse co-title='Advanced Options'>
-  <div class="row">
-    <div class="col-6">
-      <mcalizzi-piechart [cr-data]="{xvalues:['us','china'],yvalues:[100,20]}"></mcalizzi-piechart>
-    </div>
-    <div class="col-6">
-      <mcalizzi-piechart [cr-data]="{xvalues:['us','china'],yvalues:[100,20]}"></mcalizzi-piechart>
-    </div>
+<div class="mb-5"></div>
+<div class="row">
+  <div class="col-6">
+    <mcalizzi-range
+      [cr-title]="'Age'"
+      [cr-min]="23"
+      [cr-max]="65"
+      [(cr-value)]="value"
+    ></mcalizzi-range>
   </div>
-</mcalizzi-collapse>
-<p>hello</p>
+</div>

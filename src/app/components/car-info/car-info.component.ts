@@ -2,11 +2,11 @@ import { CurrencyLettersPipe } from './../../pipes/currency-letters.pipe';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'home-info',
-  templateUrl: './home-info.component.html',
-  styleUrls: ['./home-info.component.css']
+  selector: 'car-info',
+  templateUrl: './car-info.component.html',
+  styleUrls: ['./car-info.component.css']
 })
-export class HomeInfoComponent implements OnInit {
+export class CarInfoComponent implements OnInit {
   @Output() formSubmitted:EventEmitter<any> = new EventEmitter()
   constructor(public currencyLetters:CurrencyLettersPipe) { }
 
@@ -18,7 +18,6 @@ export class HomeInfoComponent implements OnInit {
   age
 
   c
-
   submitForm(data) {
     this.c = data
     this.startAge = this.c.dataOverTime.xvalues[1]
@@ -26,5 +25,4 @@ export class HomeInfoComponent implements OnInit {
     this.age = this.startAge
     this.formSubmitted.emit()
   }
-
 }

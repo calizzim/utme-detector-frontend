@@ -9,6 +9,8 @@ export class TestComponent implements OnInit {
 
   constructor() { }
 
+  value = 50
+
   ngOnInit(): void {
   }
 

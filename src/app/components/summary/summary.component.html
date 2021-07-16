@@ -1,0 +1,20 @@
+<div *ngIf="loaded">
+  <div class="row">
+    <div class="col-12 col-lg-5">
+      <h4 class="text-center">Budget By Age</h4>
+      <mcalizzi-piechart
+        [cr-data]="{
+          xvalues: c.budgetChart.labels,
+          yvalues: c.budgetChart.yvalues[age-startAge]
+        }"
+        [co-yaxis-pipe]="currencyLetters"
+      ></mcalizzi-piechart>
+      <mcalizzi-range
+        [cr-min]="startAge"
+        [cr-max]="endAge"
+        [(cr-value)]="age"
+        cr-title="Age"
+      ></mcalizzi-range>
+    </div>
+  </div>
+</div>

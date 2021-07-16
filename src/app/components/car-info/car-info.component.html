@@ -1,6 +1,6 @@
-<div></div>
+<div class="mt-3"></div>
 <mcalizzi-form
-  templateName="homeInfo"
+  templateName="carInfo"
   submitAction="upload"
   (formSubmitted)="submitForm($event)"
 ></mcalizzi-form>
@@ -8,22 +8,19 @@
 <div *ngIf="c">
   <div class="row">
     <div class="col-12">
-      <div class="alert alert-info">
-        you have {{ c.leftOver/12 | currency }} to spend per month
-      </div>
       <mcalizzi-table
         [cr-data]="[
-          ['Down Payment', c.downPayment | currency],
-          ['Monthly Housing Payment', c.dataOverTime.yvalues[1].payments.total | currency]
+          ['Monthly Payment', c.dataOverTime.yvalues[1].payments.total | currency],
+          ['Down Payment', c.downPayment | currency]
         ]"
       ></mcalizzi-table>
     </div>
     <div class="col-12 col-lg-7">
-      <h4 class="text-center">Dollar Equity In Home</h4>
+      <h4 class="text-center">Net Value From Selling Car</h4>
       <mcalizzi-linechart
-        [cr-data]="c.equityInHomeChart"
+        [cr-data]="c.equityInCarChart"
         [co-xaxis]="'your age' | titlecase"
-        [co-yaxis]="'net profit from selling home' | titlecase"
+        [co-yaxis]="'net profit from selling car' | titlecase"
         [co-yaxis-pipe]="currencyLetters"
         co-tooltip-prefix="Age"
       ></mcalizzi-linechart>

@@ -13,11 +13,20 @@ export class CurrencyLettersPipe implements PipeTransform {
   }
   transform(value, ...args: unknown[]): unknown {
     value = Number(value)
+    let negative = false
+    if(value < 0) {
+      negative = true
+      value *= -1
+    }
     let len = Math.floor(Math.log10(value))
-    if(len<3) return '$' + value.toPrecision(2)
-    if(len<6) return '$' + this.fix(value / 1000) + 'K'
-    if(len<9) return '$' + this.fix(value / 1000000) + 'M'
-    return '$' + this.fix(value / 1000000000) + 'B'
+    let formatted
+    if(len<4) formatted = value.toFixed(0)
+    else if(len<6) formatted = this.fix(value / 1000) + 'K'
+    else if(len<9) formatted = this.fix(value / 1000000) + 'M'
+    else formatted = this.fix(value / 1000000000) + 'B'
+    formatted = '$' + formatted
+    if(negative) formatted = '-' + formatted
+    return formatted
   }
 
 }
