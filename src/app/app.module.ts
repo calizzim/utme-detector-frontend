@@ -5,42 +5,42 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BudgetToolComponent } from './components/budget-tool/budget-tool.component';
-import { HomeInfoComponent } from './components/home-info/home-info.component';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { McalizziFormComponent } from './custom-components/mcalizzi-form/mcalizzi-form.component';
-import { McalizziPiechartComponent } from './custom-components/mcalizzi-piechart/mcalizzi-piechart.component';
-import { McalizziTableComponent } from './custom-components/mcalizzi-table/mcalizzi-table.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { McalizziLinechartComponent } from './custom-components/mcalizzi-linechart/mcalizzi-linechart.component';
-import { AuthGuard } from './guards/auth.guard';
-import { VarToStringPipe } from './pipes/var-to-string.pipe';
-import { BackendRequestService } from './services/backend-request.service';
-import { CurrencyLettersPipe } from './pipes/currency-letters.pipe';
-import { TestComponent } from './components/test/test.component';
-import { McalizziCollapseComponent } from './custom-components/mcalizzi-collapse/mcalizzi-collapse.component';
-import { AdvancedWrapperComponent } from './custom-components/mcalizzi-form/advanced-wrapper/advanced-wrapper.component';
-import { McalizziRangeComponent } from './custom-components/mcalizzi-range/mcalizzi-range.component';
-import { CarInfoComponent } from './components/car-info/car-info.component';
-import { OtherInfoComponent } from './components/other-info/other-info.component';
-import { SavingsInfoComponent } from './components/savings-info/savings-info.component';
-import { McalizziNavComponent } from './custom-components/mcalizzi-nav/mcalizzi-nav.component';
-import { ApplyRefDirective } from './directives/apply-ref.directive';
-import { McalizziNavbarComponent } from './custom-components/mcalizzi-navbar/mcalizzi-navbar.component';
-import { PropogateDirective } from './directives/propogate.directive';
-import { SummaryComponent } from './components/summary/summary.component';
-import { McalizziRangePieComponent } from './custom-components/mcalizzi-range-pie/mcalizzi-range-pie.component';
-import { SizeClassDirective } from './directives/size-class.directive';
-import { HomeFeaturesComponent } from './custom-components/home-features/home-features.component';
+import { AppComponent } from './native/components/app/app.component';
+import { BudgetToolComponent } from './native/components/budget-tool/budget-tool.component';
+import { HomeInfoComponent } from './native/components/home-info/home-info.component';
+import { HomeComponent } from './native/components/home/home.component';
+import { McalizziLoginComponent } from './reusable/components/mcalizzi-login/mcalizzi-login.component';
+import { McalizziFormComponent } from './reusable/components/mcalizzi-form/mcalizzi-form.component';
+import { McalizziPiechartComponent } from './reusable/components/mcalizzi-piechart/mcalizzi-piechart.component';
+import { McalizziTableComponent } from './reusable/components/mcalizzi-table/mcalizzi-table.component';
+import { McalizziSignupComponent } from './reusable/components/mcalizzi-signup/signup.component';
+import { McalizziLinechartComponent } from './reusable/components/mcalizzi-linechart/mcalizzi-linechart.component';
+import { AuthGuard } from './reusable/guards/auth.guard';
+import { VarToStringPipe } from './reusable/pipes/var-to-string.pipe';
+import { BackendRequestService } from './reusable/services/backend-request.service';
+import { CurrencyLettersPipe } from './reusable/pipes/currency-letters.pipe';
+import { TestComponent } from './native/components/test/test.component';
+import { McalizziCollapseComponent } from './reusable/components/mcalizzi-collapse/mcalizzi-collapse.component';
+import { AdvancedWrapperComponent } from './reusable/components/mcalizzi-form/advanced-wrapper/advanced-wrapper.component';
+import { McalizziRangeComponent } from './reusable/components/mcalizzi-range/mcalizzi-range.component';
+import { CarInfoComponent } from './native/components/car-info/car-info.component';
+import { OtherInfoComponent } from './native/components/other-info/other-info.component';
+import { SavingsInfoComponent } from './native/components/savings-info/savings-info.component';
+import { McalizziNavComponent } from './reusable/components/mcalizzi-nav/mcalizzi-nav.component';
+import { ApplyRefDirective } from './reusable/directives/apply-ref.directive';
+import { McalizziNavbarComponent } from './reusable/components/mcalizzi-navbar/mcalizzi-navbar.component';
+import { SummaryComponent } from './native/components/summary/summary.component';
+import { McalizziRangePieComponent } from './reusable/components/mcalizzi-range-pie/mcalizzi-range-pie.component';
+import { SizeClassDirective } from './reusable/directives/size-class.directive';
+import { McalizziHomeFeaturesComponent } from './reusable/components/mcalizzi-home-features/mcalizzi-home-features.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     McalizziFormComponent,
     VarToStringPipe,
-    SignupComponent,
-    LoginComponent,
+    McalizziSignupComponent,
+    McalizziLoginComponent,
     HomeComponent,
     BudgetToolComponent,
     McalizziTableComponent,
@@ -58,11 +58,10 @@ import { HomeFeaturesComponent } from './custom-components/home-features/home-fe
     McalizziNavComponent,
     ApplyRefDirective,
     McalizziNavbarComponent,
-    PropogateDirective,
     SummaryComponent,
     McalizziRangePieComponent,
     SizeClassDirective,
-    HomeFeaturesComponent
+    McalizziHomeFeaturesComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -79,11 +78,11 @@ import { HomeFeaturesComponent } from './custom-components/home-features/home-fe
       },
       {
         path: 'signup', 
-        component: SignupComponent, 
+        component: McalizziSignupComponent, 
       },
       {
         path: 'login', 
-        component: LoginComponent, 
+        component: McalizziLoginComponent, 
       },
       {
         path: '', 
