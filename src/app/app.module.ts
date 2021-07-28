@@ -46,24 +46,24 @@ import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    McalizziFormComponent,
-    VarToStringPipe,
     McalizziSignupComponent,
     McalizziLoginComponent,
     McalizziTableComponent,
     McalizziLinechartComponent,
     McalizziPiechartComponent,
-    CurrencyLettersPipe,
-    McalizziCollapseComponent,
-    AdvancedWrapperComponent,
+    McalizziFormComponent,
     McalizziRangeComponent,
+    McalizziCollapseComponent,
     McalizziNavComponent,
-    ApplyRefDirective,
-    McalizziNavbarComponent,
     McalizziRangePieComponent,
+    McalizziHomeFeaturesComponent,
+    McalizziNavbarComponent,
+    AdvancedWrapperComponent,
+    VarToStringPipe,
+    CurrencyLettersPipe,
+    AppComponent,
+    ApplyRefDirective,
     SizeClassDirective,
-    McalizziHomeFeaturesComponent
   ],
   imports: [
     BrowserAnimationsModule,
