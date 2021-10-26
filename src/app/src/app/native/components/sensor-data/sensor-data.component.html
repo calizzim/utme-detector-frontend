@@ -1,0 +1,5 @@
+<div *ngIf="datasets">
+  <dataset-summary 
+  *ngFor="let dataset of datasets"
+  [cr-dataset]="dataset"></dataset-summary>
+</div>
