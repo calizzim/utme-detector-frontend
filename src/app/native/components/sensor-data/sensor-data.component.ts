@@ -1,4 +1,4 @@
-import { RequestService } from './../../../../../native/services/request.service';
+import { RequestService } from '../../services/request.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,6 +11,10 @@ export class SensorDataComponent implements OnInit {
   constructor(private http:RequestService) { }
 
   async ngOnInit() {
+    this.datasets = await this.http.getDatasets()
+  }
+
+  async reload() {
     this.datasets = await this.http.getDatasets()
   }
 

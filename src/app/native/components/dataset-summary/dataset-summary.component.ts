@@ -1,6 +1,6 @@
-import { RequestService } from './../../../../../native/services/request.service';
+import { RequestService } from '../../services/request.service';
 import { Router } from '@angular/router';
-import { Component, OnInit, Input, ContentChild, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ContentChild, ViewChild, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'dataset-summary',
@@ -9,6 +9,7 @@ import { Component, OnInit, Input, ContentChild, ViewChild } from '@angular/core
 })
 export class DatasetSummaryComponent implements OnInit {
   @Input('cr-dataset') dataset
+  @Output('deleted') deleted = new EventEmitter()
 
   startDate
   startTime
@@ -26,6 +27,11 @@ export class DatasetSummaryComponent implements OnInit {
 
   viewData() {
     this.router.navigate(["viewData"], { fragment: this.dataset._id })
+  }
+
+  async deleteData() {
+    await this.request.deleteDataset(this.dataset._id)
+    this.deleted.emit()
   }
 
   changeName() {  

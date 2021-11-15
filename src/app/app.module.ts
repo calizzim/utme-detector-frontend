@@ -16,8 +16,8 @@ import { McalizziNotFoundComponent } from './reusable/components/mcalizzi-not-fo
 
 //native components
 import { HomeComponent } from './native/components/home/home.component';
-import { SensorDataComponent } from './src/app/native/components/sensor-data/sensor-data.component';
-import { DatasetSummaryComponent } from './src/app/native/components/dataset-summary/dataset-summary.component';
+import { SensorDataComponent } from './native/components/sensor-data/sensor-data.component';
+import { DatasetSummaryComponent } from './native/components/dataset-summary/dataset-summary.component';
 
 
 //services
@@ -44,7 +44,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { DatasetViewComponent } from './src/app/native/components/dataset-view/dataset-view.component';
+import { DatasetViewComponent } from './native/components/dataset-view/dataset-view.component';
 
 
 @NgModule({

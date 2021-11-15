@@ -22,4 +22,7 @@ export class RequestService {
     return dataset
   }
 
+  async deleteDataset(id) {
+    return this.http.delete(`sensorData/${id}`)
+  }
 }

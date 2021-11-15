@@ -1,0 +1,17 @@
+<div *ngIf="data">
+  <h1 class="mb-3">{{ data.title }}</h1>
+  <div class="row" *ngIf="data">
+    <div class="col-12 mb-3">
+      <div class="px-5 btn btn-success" (click)="download()">Download This Dataset</div>
+    </div>
+    <div *ngFor="let n of names" class="col-12 col-lg-6 mb-3">
+      <h5>{{ n.display }}</h5>
+      <mcalizzi-linechart 
+      [cr-data]="{ xvalues: data.time, yvalues: data[n.name] }"
+      [co-begin-at-zero]="true"
+      co-xaxis="time (seconds)"
+      [co-yaxis]="n.display"
+      ></mcalizzi-linechart>
+    </div>
+  </div>
+</div>
